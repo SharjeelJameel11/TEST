@@ -13,8 +13,10 @@ function Home() {
 
 
     const fetchMovies = async () => {
+        const trimmedSearch = search.trim()
+        console.log(trimmedSearch,"sss")
         try {
-            const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${search}&page=${currentPage}`);
+            const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${trimmedSearch}&page=${currentPage}`);
             const data = await res.json();
             console.log(res, "res");
 
