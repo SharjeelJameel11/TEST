@@ -14,11 +14,10 @@ function Home() {
 
     const fetchMovies = async () => {
         const trimmedSearch = search.trim()
-        console.log(trimmedSearch,"sss")
+
         try {
             const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${trimmedSearch}&page=${currentPage}`);
             const data = await res.json();
-            console.log(res, "res");
 
             if (data.Response === "True") {
                 setMovies(data.Search);
@@ -37,14 +36,12 @@ function Home() {
         } catch (error) {
             setError(error.message)
             setMovies([])
-            console.error(error);
         } finally {
             setLoading(false);
         }
     };
 
-    console.log(error, "err")
-    console.log(loading, "loading")
+
 
     const debouncedFetchMovies = debounce(fetchMovies, 1500);
 
@@ -58,7 +55,7 @@ function Home() {
     const handlePageChange = (page) => {
         setCurrentPage(page);
         setLoading(true)
-    
+
     };
     const totalPages = Math.ceil(totalResults / 10)
     const renderPagination = () => {
@@ -75,7 +72,7 @@ function Home() {
             }
             let startPage = Math.max(5, currentPage - 1);
             let endPage = Math.min(totalPages - 4, currentPage + 1);
-    
+
             for (let i = startPage; i <= endPage; i++) {
                 pages.push(i);
             }
@@ -84,8 +81,8 @@ function Home() {
             }
             pages.push(totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
         }
-    
-        return pages.map((page, index) => 
+
+        return pages.map((page, index) =>
             typeof page === "number" ? (
                 <button
                     key={index}
@@ -99,7 +96,7 @@ function Home() {
             )
         );
     };
-    
+
     return (
         <div className="container">
             <h1> Movie Search App</h1>
@@ -137,21 +134,21 @@ function Home() {
 
                 )}
 
-{movies.length > 0 && loading === false && (
-    <div className="pagination">
-        <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-            Previous
-        </button>
+            {movies.length > 0 && loading === false && (
+                <div className="pagination">
+                    <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
 
-        {renderPagination()}
+                    {renderPagination()}
 
-        <button className="button" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-            Next
-        </button>
-    </div>
-)}
+                    <button className="button" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        Next
+                    </button>
+                </div>
+            )}
 
-           
+
         </div>
     );
 }
