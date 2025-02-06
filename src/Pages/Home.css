@@ -1,0 +1,70 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+ 
+  .search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.6rem;
+  }
+  
+  
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  .movie-card {
+    background-color: #333;
+    padding: 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+  }
+
+  .movie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .error-message{
+    color: #ff0000;
+    text-transform: capitalize;
+  }
+
+  .button{
+   border: 1px solid #2973B2; 
+   background-color: #9ACBD0;
+   border-radius: 5px;
+   padding: 10px;
+   min-width: 10%;;
+   margin-top: 10px;
+   margin-left: 5px;
+   cursor: pointer;
+  }
+  .button.active {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
