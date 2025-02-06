@@ -135,7 +135,7 @@ function Home() {
 
                 )}
 
-{movies.length > 0 && (
+{movies.length > 0 && loading === false && (
     <div className="pagination">
         <button className="button" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
             Previous
