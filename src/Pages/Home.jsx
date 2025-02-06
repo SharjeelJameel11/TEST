@@ -107,11 +107,7 @@ function Home() {
                     type="text"
                     placeholder="Search Movies..."
                     value={search}
-                    onChange={(e) => { 
-                        const trimmedValue = e.target.value.trim();
-                        setSearch(trimmedValue.length > 0 ? trimmedValue : ""); 
-                        setLoading(trimmedValue.length > 0); 
-                    }}
+                    onChange={(e) => { setSearch(e.target.value); setLoading(e.target.value.length > 0); }}
                 />
             </div>
 
